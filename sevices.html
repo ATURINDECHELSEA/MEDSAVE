@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MEDSAVE - Services</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-top: 0;
+            color: #205295;
+        }
+
+        #service-details {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid #144272;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #service-details h2 {
+            color: #144272;
+        }
+
+        .page-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .btn-medsave {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-medsave:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+        .rate-star {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: #28a745;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .rate-star:hover {
+            transform: scale(1.2);
+            color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="Video 1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: red;">
+                 MEDSAVE
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <form class="d-flex" action="search.html" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search MEDSAVE">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <h1 class="text-center page-title">Our Services</h1>
+
+        <div class="services-grid">
+            <div class="service-card" onclick="showService('consultation')">
+                <h3><i class="fas fa-user-md me-2"></i>Doctor Consultation</h3>
+                <p>Book a visit or virtual session with certified doctors.</p>
+            </div>
+
+            <div class="service-card" onclick="showService('pharmacy')">
+                <h3><i class="fas fa-pills me-2"></i>Online Pharmacy</h3>
+                <p>Order medications and have them delivered to your doorstep.</p>
+            </div>
+
+            <div class="service-card" onclick="showService('lab')">
+                <h3><i class="fas fa-flask me-2"></i>Lab Testing</h3>
+                <p>Book lab tests and receive your results online.</p>
+            </div>
+        </div>
+
+        <div id="service-details"></div>
+    </main>
+
+    <!-- Rate Us Star -->
+    <a href="rate.html" class="rate-star" title="Rate Us">
+        <i class="fas fa-star"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: red;">MEDSAVE</h5>
+                    <p>Your trusted partner in healthcare services.</p>
+                    <a href="https://www.medsave.com" class="text-white"></a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 MEDSAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const serviceInfo = {
+            consultation: {
+                title: "Doctor Consultation",
+                description: `
+                    <p>Our platform connects you with licensed doctors across various specialties. 
+                    You can book in-person appointments or schedule virtual consultations.</p>
+                    <ul>
+                        <li>General checkups</li>
+                        <li>Specialist referrals</li>
+                        <li>Follow-ups & prescriptions</li>
+                    </ul>
+                `
+            },
+            pharmacy: {
+                title: "Online Pharmacy",
+                description: `
+                    <p>We offer a secure and fast online pharmacy service. Upload your prescription, 
+                    place an order, and get delivery within hours.</p>
+                    <ul>
+                        <li>Prescription & OTC drugs</li>
+                    </ul>
+                `
+            },
+            lab: {
+                title: "Lab Testing",
+                description: `
+                    <p>Book lab tests at your convenience. We offer both in-lab and at-home testing services 
+                    with accurate results delivered to your account.</p>
+                    <ul>
+                        <li>Blood & urine tests</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showService(key) {
+            const details = document.getElementById('service-details');
+            details.innerHTML = `
+                <h2>${serviceInfo[key].title}</h2>
+                ${serviceInfo[key].description}
+            `;
+            details.style.display = 'block';
+            details.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

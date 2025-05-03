@@ -1,0 +1,286 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #1e88e5;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+.navbar .navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Home Section */
+.page-container {
+    display: none;
+}
+
+.page-container.active {
+    display: block;
+}
+
+.card-medsave {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+}
+
+.card-medsave h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-medsave p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-medsave {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    transition: background-color 0.3s;
+}
+
+.btn-medsave:hover {
+    background-color: #1565c0;
+}
+
+.btn-outline-primary {
+    border: 2px solid #1e88e5;
+    color: #1e88e5;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1e88e5;
+    color: white;
+}
+
+/* Rate Us Button */
+.rate-us-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.rate-us-btn:hover {
+    background-color: #1565c0;
+}
+
+/* Footer */
+footer {
+    background-color: #212121;
+    color: #f0f0f0;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Help Button */
+.help-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    background-color: orange;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.help-btn:hover {
+    background-color: #ff8c00;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .card-medsave {
+        padding: 1.5rem;
+    }
+
+    .btn-medsave, .btn-outline-primary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .card-medsave h1 {
+        font-size: 2rem;
+    }
+
+    .card-medsave p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .card-medsave h1 {
+        font-size: 1.8rem;
+    }
+
+    .card-medsave p {
+        font-size: 1rem;
+    }
+
+    .rate-us-btn {
+        font-size: 1.8rem;
+    }
+}
+
+.contact-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-item h4 {
+    color: #144272;
+    margin-bottom: 1rem;
+}
+
+.contact-item p {
+    color: #666;
+}
+
+.contact-item .fw-bold {
+    color: #205295;
+}

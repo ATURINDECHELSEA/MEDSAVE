@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MEDSAVE - Search Results</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .search-results {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .result-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #144272;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+        }
+
+        .result-item h3 {
+            color: #144272;
+            margin-bottom: 10px;
+        }
+
+        .result-item p {
+            color: #333;
+        }
+
+        .page-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .search-highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .btn-medsave {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-medsave:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="Video 1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: red;">
+                 MEDSAVE
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="help.html" class="btn-medsave me-2" data-bs-toggle="tooltip" title="Get Help">
+                    GET HELP
+                </a>
+                <form class="d-flex" action="search.php" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search MEDSAVE">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <h1 class="text-center page-title">Search Results</h1>
+
+        <div class="search-results">
+            <div id="searchResults">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: red;">MEDSAVE</h5>
+                    <p>Your trusted partner in healthcare services.</p>
+                    <a href="https://www.medsave.com" class="text-white"></a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 MEDSAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sample search data - in a real application, this would come from a database
+        const searchData = {
+            'doctor': {
+                title: 'Doctor Consultation',
+                description: 'Book appointments with certified doctors for in-person or virtual consultations.',
+                link: 'sevices.html#consultation'
+            },
+            'pharmacy': {
+                title: 'Online Pharmacy',
+                description: 'Order medications online and get them delivered to your doorstep.',
+                link: 'sevices.html#pharmacy'
+            },
+            'lab': {
+                title: 'Lab Testing',
+                description: 'Book lab tests and receive your results online.',
+                link: 'sevices.html#lab'
+            },
+            'help': {
+                title: 'Get Help',
+                description: 'Contact our support team for assistance with any queries.',
+                link: 'help.html'
+            },
+            'login': {
+                title: 'Login',
+                description: 'Access your MEDSAVE account to manage appointments and prescriptions.',
+                link: 'login.html'
+            }
+        };
+
+        function performSearch() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q')?.toLowerCase() || '';
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (!query) {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            const results = [];
+            for (const [key, data] of Object.entries(searchData)) {
+                if (key.includes(query) || 
+                    data.title.toLowerCase().includes(query) || 
+                    data.description.toLowerCase().includes(query)) {
+                    results.push(data);
+                }
+            }
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p>No results found. Please try a different search term.</p>';
+                return;
+            }
+
+            resultsContainer.innerHTML = results.map(result => `

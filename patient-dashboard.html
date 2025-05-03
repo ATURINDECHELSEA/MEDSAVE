@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | MEDSAVE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .appointment-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .appointment-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .appointment-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-btn {
+            padding: 15px;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .quick-action-btn i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #4CAF50;
+        }
+
+        .prescription-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .prescription-item:last-child {
+            border-bottom: none;
+        }
+
+        .health-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card i {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="color: red;">MEDSAVE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="help.html">Help</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                </ul>
+                <div class="d-flex">
+                    <a href="login.html" class="btn btn-outline-light">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container dashboard-container">
+        <h2 class="mb-4">Welcome, John Doe</h2>
+
+        <div class="health-metrics">
+            <div class="metric-card">
+                <i class="fas fa-heartbeat"></i>
+                <div>Blood Pressure</div>
+                <div class="metric-value">120/80</div>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-weight"></i>
+                <div>Weight</div>
+                <div class="metric-value">70 kg</div>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-temperature-high"></i>
+                <div>Temperature</div>
+                <div class="metric-value">36.6°C</div>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <a href="appointment.html" class="quick-action-btn">
+                <i class="fas fa-calendar-plus"></i>
+                <div>Book Appointment</div>
+            </a>
+            <a href="order-medicine.html" class="quick-action-btn">
+                <i class="fas fa-pills"></i>
+                <div>Order Medicine</div>
+            </a>
+            <a href="medical-records.html" class="quick-action-btn">
+                <i class="fas fa-file-medical"></i>
+                <div>View Records</div>
+            </a>
+            <a href="contact-doctor.html" class="quick-action-btn">
+                <i class="fas fa-phone"></i>
+                <div>Contact Doctor</div>
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Upcoming Appointments
+                    </div>
+                    <div class="card-body">
+                        <div class="appointment-list">
+                            <div class="appointment-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1">Dr. Smith</h5>
+                                        <p class="mb-0">Tomorrow, 10:00 AM - General Checkup</p>
+                                    </div>
+                                    <span class="status-badge status-confirmed">Confirmed</span>
+                                </div>
+                            </div>
+                            <div class="appointment-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-1">Dr. Johnson</h5>
+                                        <p class="mb-0">Next Week - Follow-up</p>
+                                    </div>
+                                    <span class="status-badge status-pending">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Recent Prescriptions
+                    </div>
+                    <div class="card-body">
+                        <div class="prescription-item">
+                            <h5 class="mb-1">Dr. Smith</h5>
+                            <p class="mb-0">Amoxicillin 500mg</p>
+                            <small class="text-muted">Prescribed on: 2024-02-15</small>
+                        </div>
+                        <div class="prescription-item">
+                            <h5 class="mb-1">Dr. Johnson</h5>
+                            <p class="mb-0">Vitamin D3 1000IU</p>
+                            <small class="text-muted">Prescribed on: 2024-02-10</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Handle health metrics updates
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const metricType = this.querySelector('div').textContent;
+                    const currentValue = this.querySelector('.metric-value').textContent;
+                    const newValue = prompt(`Enter new ${metricType} value:`, currentValue);
+                    
+                    if (newValue && newValue !== currentValue) {
+                        this.querySelector('.metric-value').textContent = newValue;
+                        showNotification(`${metricType} updated successfully!`, 'success');
+                    }
+                });
+            });
+
+            // Quick action buttons
+            const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+            quickActionBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const action = this.querySelector('div').textContent;
+                    
+                    switch(action) {
+                        case 'Book Appointment':
+                            showAppointmentModal();
+                            break;
+                        case 'Order Medicine':
+                            showMedicineOrderModal();
+                            break;
+                        case 'View Records':
+                            showRecordsModal();
+                            break;
+                        case 'Contact Doctor':
+                            showContactModal();
+                            break;
+                        default:
+                            alert(`Action: ${action} - This feature will be implemented soon!`);
+                    }
+                });
+            });
+
+            // Appointment status updates
+            const appointmentItems = document.querySelectorAll('.appointment-item');
+            appointmentItems.forEach(item => {
+                const statusBadge = item.querySelector('.status-badge');
+                if (statusBadge) {
+                    statusBadge.addEventListener('click', function() {
+                        const currentStatus = this.textContent.toLowerCase();
+                        if (currentStatus === 'pending') {
+                            if (confirm('Would you like to cancel this appointment?')) {
+                                this.className = 'status-badge status-cancelled';
+                                this.textContent = 'Cancelled';
+                                showNotification('Appointment cancelled successfully!', 'warning');
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Add hover effect to appointment items
+            appointmentItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#f8f9fa';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                });
+            });
+
+            // Handle logout
+            document.querySelector('.btn-outline-light').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (confirm('Are you sure you want to logout?')) {
+                    window.location.href = 'login.html';
+                }
+            });
+
+            // Notification system
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+                notification.style.zIndex = '1000';
+                notification.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                document.body.appendChild(notification);
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
+
+            // Modal functions
+            function showAppointmentModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.innerHTML = `
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Book Appointment</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="appointmentForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Doctor</label>
+                                        <select class="form-select">
+                                            <option>Dr. Smith</option>
+                                            <option>Dr. Johnson</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Date</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Time</label>
+                                        <input type="time" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Reason</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="submitAppointment()">Book Appointment</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                const modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+                modal.addEventListener('hidden.bs.modal', function() {
+                    modal.remove();
+                });
+            }
+
+            function showMedicineOrderModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.innerHTML = `
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Order Medicine</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="medicineForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Medicine Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Quantity</label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Delivery Address</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="submitMedicineOrder()">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                const modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+                modal.addEventListener('hidden.bs.modal', function() {
+                    modal.remove();
+                });
+            }
+
+            function showRecordsModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.innerHTML = `
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Medical Records</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">General Checkup</h5>
+                                            <small>3 days ago</small>
+                                        </div>
+                                        <p class="mb-1">Dr. Smith - All vitals normal</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">Blood Test Results</h5>
+                                            <small>1 week ago</small>
+                                        </div>
+                                        <p class="mb-1">Dr. Johnson - All parameters within range</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                const modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+                modal.addEventListener('hidden.bs.modal', function() {
+                    modal.remove();
+                });
+            }
+
+            function showContactModal() {
+                const modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.innerHTML = `
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Contact Doctor</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="contactForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Doctor</label>
+                                        <select class="form-select">
+                                            <option>Dr. Smith</option>
+                                            <option>Dr. Johnson</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Subject</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Message</label>
+                                        <textarea class="form-control" rows="4"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="submitContact()">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                const modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+                modal.addEventListener('hidden.bs.modal', function() {
+                    modal.remove();
+                });
+            }
+
+            // Form submission handlers
+            window.submitAppointment = function() {
+                showNotification('Appointment request sent successfully!', 'success');
+                bootstrap.Modal.getInstance(document.querySelector('.modal')).hide();
+            };
+
+            window.submitMedicineOrder = function() {
+                showNotification('Medicine order placed successfully!', 'success');
+                bootstrap.Modal.getInstance(document.querySelector('.modal')).hide();
+            };
+
+            window.submitContact = function() {
+                showNotification('Message sent successfully!', 'success');
+                bootstrap.Modal.getInstance(document.querySelector('.modal')).hide();
+            };
+
+            // Simulate prescription update notification
+            setTimeout(() => {
+                showNotification('New prescription available from Dr. Smith', 'info');
+            }, 8000);
+        });
+    </script>
+</body>
+</html> 

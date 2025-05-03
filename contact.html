@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact Us | MEDSAVE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        .contact-form {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header i {
+            font-size: 48px;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+        .btn-medsave {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-medsave:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+        .rate-star {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: #28a745;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .rate-star:hover {
+            transform: scale(1.2);
+            color: #218838;
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .contact-info {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .main-header {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .main-header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-header p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            color: #144272;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="Video 1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="color: red;">
+                 MEDSAVE
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="help.html" class="btn-medsave me-2" data-bs-toggle="tooltip" title="Get Help">
+                    GET HELP
+                </a>
+                <form class="d-flex" action="search.html" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search MEDSAVE">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team</p>
+    </header>
+
+    <section class="section contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="contact-info">
+                        <h2>📧 Email</h2>
+                        <p>support@medsave.com</p>
+                        <h2>📞 Phone</h2>
+                        <p>+256756857340</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+    </main>
+
+    <!-- Contact Form Section -->
+    <div class="container">
+        <div class="contact-form">
+            <div class="form-header">
+                <i class="fas fa-envelope"></i>
+                <h2>Contact Us</h2>
+                <p class="text-muted">We'd love to hear from you. Send us a message!</p>
+            </div>
+
+            <form id="contactForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn-medsave">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rate Us Star -->
+    <a href="rate.html" class="rate-star" title="Rate Us">
+        <i class="fas fa-star"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: red;">MEDSAVE</h5>
+                    <p>Your trusted partner in healthcare services.</p>
+                    <a href="https://www.medsave.com" class="text-white"></a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 MEDSAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successAlert = document.createElement('div');
+            successAlert.className = 'alert alert-success alert-dismissible fade show';
+            successAlert.innerHTML = `
+                Your message has been sent successfully! We'll get back to you soon.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            this.insertAdjacentElement('beforebegin', successAlert);
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html> 

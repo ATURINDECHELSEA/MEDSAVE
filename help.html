@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MEDSAVE - Get Help</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .help-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-medsave {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-medsave:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .help-section {
+            margin-bottom: 30px;
+        }
+
+        .help-section h3 {
+            color: #144272;
+            margin-bottom: 15px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-item h4 {
+            color: #144272;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p {
+            color: #333;
+        }
+
+        .contact-item .fw-bold {
+            color: #205295;
+        }
+
+        .page-title {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="Video 1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: red; font-size: 1.5rem;">MEDSAVE</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="help.html" class="btn-medsave me-2" data-bs-toggle="tooltip" title="Get Help">
+                    GET HELP
+                </a>
+                <form class="d-flex" action="search.php" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search MEDSAVE">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <h1 class="text-center page-title">Get Help</h1>
+
+        <div class="help-container">
+            <div class="help-section">
+                <h3 class="text-center mb-4"><i class="fas fa-headset me-2"></i>How Can We Help You?</h3>
+                <div class="contact-info">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="contact-item text-center mb-4">
+                                <i class="fas fa-phone fa-2x mb-3" style="color: #144272;"></i>
+                                <h4>Emergency Support</h4>
+                                <p class="mb-0">24/7 Hotline</p>
+                                <p class="fw-bold">+256756857340</p>
+                            </div>
+                            <div class="contact-item text-center">
+                                <i class="fas fa-envelope fa-2x mb-3" style="color: #144272;"></i>
+                                <h4>Email Support</h4>
+                                <p class="mb-0">We'll respond within 24 hours</p>
+                                <p class="fw-bold">support@medsave.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: red;">MEDSAVE</h5>
+                    <p>Your trusted partner in healthcare services.</p>
+                    <a href="https://www.medsave.com" class="text-white"></a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 MEDSAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

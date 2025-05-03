@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | MEDSAVE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .signup-form {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header i {
+            font-size: 48px;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+        .btn-medsave {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-medsave:hover {
+            background-color: #e05e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+        .form-control {
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+            border-color: #0d6efd;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .user-type-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .user-type-btn {
+            padding: 10px 20px;
+            border: 2px solid #0d6efd;
+            border-radius: 25px;
+            background: transparent;
+            color: #0d6efd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .user-type-btn.active {
+            background: #0d6efd;
+            color: white;
+        }
+        .user-type-btn:hover {
+            background: #0d6efd;
+            color: white;
+        }
+        .user-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .patient-icon {
+            color: #0d6efd;
+        }
+        .doctor-icon {
+            color: #198754;
+        }
+        .doctor-fields {
+            display: none;
+        }
+        .navbar {
+            background-color: rgba(33, 37, 41, 0.75) !important;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ff6b00 !important;
+        }
+        .btn-outline-light {
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+        }
+        .btn-outline-light:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+        }
+        .login-btn {
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .login-btn:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="Video 1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" style="color: red;">
+                 MEDSAVE
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sevices.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="help.html" class="btn-medsave me-2" data-bs-toggle="tooltip" title="Get Help">
+                    GET HELP
+                </a>
+                <form class="d-flex" action="search.html" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search MEDSAVE">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Up Form Section -->
+    <div class="container">
+        <div class="signup-form">
+            <div class="form-header">
+                <i class="fas fa-user-plus user-icon patient-icon" id="userIcon"></i>
+                <h2>Create Account</h2>
+                <p class="text-muted">Join MEDSAVE for better healthcare management</p>
+            </div>
+
+            <div class="user-type-toggle">
+                <button type="button" class="user-type-btn active" data-type="patient">Patient Sign Up</button>
+                <button type="button" class="user-type-btn" data-type="doctor">Doctor Sign Up</button>
+            </div>
+
+            <form id="signupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                </div>
+
+                <!-- Doctor-specific fields -->
+                <div class="doctor-fields" id="doctorFields">
+                    <div class="mb-3">
+                        <label for="specialization" class="form-label">Specialization</label>
+                        <input type="text" class="form-control" id="specialization">
+                    </div>
+                    <div class="mb-3">
+                        <label for="license" class="form-label">Medical License Number</label>
+                        <input type="text" class="form-control" id="license">
+                    </div>
+                    <div class="mb-3">
+                        <label for="experience" class="form-label">Years of Experience</label>
+                        <input type="number" class="form-control" id="experience" min="0">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" required>
+                    <label class="form-check-label" for="terms">I agree to the Terms and Conditions</label>
+                </div>
+
+                <button type="submit" class="btn-medsave">Create Account</button>
+
+                <div class="login-link">
+                    Already have an account? <a href="login.html" class="login-btn">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 style="color: red;">MEDSAVE</h5>
+                    <p>Your trusted partner in healthcare services.</p>
+                    <a href="https://www.medsave.com" class="text-white"></a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 MEDSAVE. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // User type toggle functionality
+        const userTypeBtns = document.querySelectorAll('.user-type-btn');
+        const userIcon = document.getElementById('userIcon');
+        const doctorFields = document.getElementById('doctorFields');
+        let currentUserType = 'patient';
+
+        userTypeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                userTypeBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Update user type and icon
+                currentUserType = this.dataset.type;
+                if (currentUserType === 'patient') {
+                    userIcon.className = 'fas fa-user-plus user-icon patient-icon';
+                    doctorFields.style.display = 'none';
+                    // Make doctor fields not required
+                    document.querySelectorAll('#doctorFields input').forEach(input => {
+                        input.required = false;
+                    });
+                } else {
+                    userIcon.className = 'fas fa-user-md user-icon doctor-icon';
+                    doctorFields.style.display = 'block';
+                    // Make doctor fields required
+                    document.querySelectorAll('#doctorFields input').forEach(input => {
+                        input.required = true;
+                    });
+                }
+            });
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                action: 'register',
+                first_name: document.getElementById('firstName').value,
+                last_name: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                phone: document.getElementById('phone').value,
+                user_type: document.querySelector('input[name="userType"]:checked').value
+            };
+
+            // Add doctor-specific fields if user is a doctor
+            if (formData.user_type === 'doctor') {
+                formData.specialization = document.getElementById('specialization').value;
+                formData.license = document.getElementById('license').value;
+                formData.experience = document.getElementById('experience').value;
+            } else {
+                formData.date_of_birth = document.getElementById('dateOfBirth').value;
+                formData.gender = document.getElementById('gender').value;
+            }
+
+            try {
+                const response = await fetch('api/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+
+        // Toggle form fields based on user type
+        document.querySelectorAll('input[name="userType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const doctorFields = document.getElementById('doctorFields');
+                const patientFields = document.getElementById('patientFields');
+                
+                if (this.value === 'doctor') {
+                    doctorFields.style.display = 'block';
+                    patientFields.style.display = 'none';
+                } else {
+                    doctorFields.style.display = 'none';
+                    patientFields.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
